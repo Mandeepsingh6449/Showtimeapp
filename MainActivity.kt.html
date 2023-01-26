@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span>
+
+<span class="s1">import androidx.appcompat.app.AppCompatActivity</span>
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import android.widget.Button</span>
+<span class="s1">import android.widget.Spinner</span>
+<span class="s1">import android.widget.TextView</span>
+
+<span class="s0">class </span><span class="s1">MainActivity : AppCompatActivity() {</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span>
+        <span class="s0">val </span><span class="s1">findMovieButton= findViewById&lt;Button&gt;(R.id.find_movie)</span>
+        <span class="s1">findMovieButton.setOnClickListener{</span>
+            <span class="s0">val </span><span class="s1">genreChoice= findViewById&lt;Spinner&gt;(R.id.movie_choice)</span>
+            <span class="s0">val </span><span class="s1">genre = genreChoice.selectedItem</span>
+            <span class="s0">val </span><span class="s1">movieList= getmovie(genre.toString())</span>
+            <span class="s0">val </span><span class="s1">movies= movieList.reduce { str</span><span class="s0">, </span><span class="s1">item-&gt;str + </span><span class="s2">'</span><span class="s1">\n</span><span class="s2">' </span><span class="s1">+ item}</span>
+            <span class="s0">val </span><span class="s1">movieTypes = findViewById&lt;TextView&gt;(R.id.movies)</span>
+            <span class="s1">movieTypes.text = movies</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s0">fun </span><span class="s1">getmovie(genre: String) : List&lt;String&gt; {</span>
+        <span class="s0">return when </span><span class="s1">(genre) {</span>
+            <span class="s2">&quot;Action&quot; </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;Red Notice&quot;</span><span class="s0">, </span><span class="s2">&quot;Jumanji&quot;</span><span class="s1">)</span>
+            <span class="s2">&quot;Horror&quot; </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;Mirzapur&quot;</span><span class="s0">, </span><span class="s2">&quot;House of Dragon&quot;</span><span class="s1">)</span>
+            <span class="s2">&quot;Thrill&quot; </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;Charmsukh&quot;</span><span class="s0">, </span><span class="s2">&quot;Andheri Raat&quot;</span><span class="s1">)</span>
+            <span class="s2">&quot;Crime&quot;  </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;Ragni&quot;</span><span class="s0">, </span><span class="s2">&quot;Apharan&quot;</span><span class="s1">)</span>
+            <span class="s2">&quot;Drama&quot; </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;The Stand&quot;</span><span class="s0">,</span><span class="s2">&quot;Shark Tank&quot;</span><span class="s1">)</span>
+            <span class="s2">&quot;Comedy&quot; </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;Abhay&quot;</span><span class="s0">,</span><span class="s2">&quot;Family&quot;</span><span class="s1">)</span>
+            <span class="s0">else </span><span class="s1">-&gt; listOf(</span><span class="s2">&quot;Web Series&quot;</span><span class="s0">, </span><span class="s2">&quot;TV Shows&quot;</span><span class="s1">)</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
